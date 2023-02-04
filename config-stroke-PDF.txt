@@ -1,0 +1,39 @@
+name:Stroke
+
+random_variables:HearDisease(heart_disease);Gender(gender);WorkType(work_type);Residence_Type(Residence_type);Hypertension(hypertension);Stroke(stroke);Age(age);EverMarried(ever_married);BMI(bmi);AvgGlucoseLevel(avg_glucose_level);SmokingStatus(smoking_status)
+
+structure:P(heart_disease);P(gender|heart_disease);P(work_type|heart_disease);P(Residence_type|heart_disease);P(hypertension|heart_disease,work_type);P(stroke|hypertension,heart_disease);P(age|stroke,hypertension,heart_disease,work_type);P(ever_married|age);P(bmi|age,hypertension);P(avg_glucose_level|age,stroke,gender,hypertension,heart_disease);P(smoking_status|hypertension,gender,age,stroke,heart_disease,Residence_type,avg_glucose_level,ever_married,work_type)
+
+PDF(heart_disease):
+0.055408335340881715 ; 0.2287755487713539
+
+PDF(gender|heart_disease):
+-0.1869752235422155*heart_disease + 0.59648381147066 ; 0.49301571808452793
+
+PDF(work_type|heart_disease):
+-0.2504037060379838*heart_disease + 0.8558402438903243 ; 1.1171264328220645
+
+PDF(Residence_type|heart_disease):
+-0.03681754915390044*heart_disease + 0.489151538498048 ; 0.4998338599805494
+
+PDF(hypertension|heart_disease,work_type):
+0.1508495368770582*heart_disease + -0.016702675782031252*work_type + 0.102067082239575 ; 0.2950874873097097
+
+PDF(stroke|hypertension,heart_disease):
+0.0884897202500167*hypertension + 0.11191193618026976*heart_disease + 0.03562138438413184 ; 0.21866472064954537
+
+PDF(age|stroke,hypertension,heart_disease,work_type):
+17.233976437957075*stroke + 15.464493292025075*hypertension + 20.63090243936408*heart_disease + -7.496478209412523*work_type + 46.21363174861479 ; 22.71296295347944
+
+PDF(ever_married|age):
+-0.014192928741044364*age + 0.9600276279936772 ; 0.4750454809007658
+
+PDF(bmi|age,hypertension):
+0.10594481423286681*age + 2.0656029643486313*hypertension + 24.197068204760395 ; 7.661565605371959
+
+PDF(avg_glucose_level|age,stroke,gender,hypertension,heart_disease):
+0.3432458086763372*age + 12.701572667377748*stroke + -3.820872927695527*gender + 16.156561217496378*hypertension + 18.338977053935388*heart_disease + 90.38813238200476 ; 45.51422994212497
+
+PDF(smoking_status|hypertension,gender,age,stroke,heart_disease,Residence_type,avg_glucose_level,ever_married,work_type):
+-0.1547909762367825*hypertension + -0.047863851271641854*gender + -0.01218629264935454*age + 0.11886451228857343*stroke + 0.09911268102186738*heart_disease + -0.021177252876357307*Residence_type + -0.0005352559285444806*avg_glucose_level + 0.145715388924467*ever_married + 0.16874688238050153*work_type + 2.0179086072156722 ; 1.0948171018323904
+
